@@ -17,12 +17,6 @@ def add_headers(f):
     ',' + str("in time") + ',' + str("out time") + '\n')
     return 
     
-def split_video_name(video_path):
-    video_split = video_path.split('/')
-    video_name_array = video_split[-1].split('.')
-    
-    return video_name_array[0]
-    
 def file_init(path, binary):
     delete_if_exist(path)
     if binary:
@@ -31,25 +25,28 @@ def file_init(path, binary):
         file = open(path, "a")
     return file
     
-def xy_init(xy_path, video_name):
-    xy_path += "_" + video_name + ".csv"
+def xy_init(directory, xy_name, video_name):
+    xy_path = directory + "/" + xy_name + "_" + video_name + ".csv"
+    print("xy_path: ", xy_path)
     return file_init(xy_path, False)
 
-def logger_init(log_path, video_name):
-    log_path += "_" + video_name + ".csv"
+def logger_init(directory, log_name, video_name):
+    log_path = directory + "/" + log_name + "_" + video_name + ".csv"
+    print("log_path: ", log_path)
     log_file = file_init(log_path, False)
     add_headers(log_file)
     return log_path, log_file
     
-def event_matrix_init(event_matrix_path, video_name):
-    event_matrix_path += "_" + video_name + ".csv"
+def event_matrix_init(directory, event_matrix_name, video_name):
+    event_matrix_path = directory + "/" + event_matrix_name + "_" + video_name + ".csv"
+    print("event_matrix_path: ", event_matrix_path)
     event_matrix_file = file_init(event_matrix_path, True)
     return event_matrix_file
 
-def output_init(event_matrix_path, xy_path, log_path, video_name):
-    event_matrix_file = event_matrix_init(event_matrix_path, video_name)
-    xy_file = xy_init(xy_path, video_name)
-    log_path, log_file = logger_init(log_path, video_name)
+def output_init(directory, event_matrix_name, xy_name, log_name, video_name):
+    event_matrix_file = event_matrix_init(directory, event_matrix_name, video_name)
+    xy_file = xy_init(directory, xy_name, video_name)
+    log_path, log_file = logger_init(directory, log_name, video_name)
     
     return event_matrix_file, xy_file, log_path, log_file   
     
@@ -97,10 +94,10 @@ def sort_by_time_func(time_list):
     return (splited[0],splited[1], splited[2])    
     
 
-def sort_log_by_time(log_path, video_name):
+def sort_log_by_time(directory, log_path, video_name):
 
     f = open(log_path, 'r')
-    sorted_log_path = "./detections/sorted_log_file" + "_" + video_name + ".csv"
+    sorted_log_path = directory + "/sorted_log_file" + "_" + video_name + ".csv"
         
     reader = list(csv.reader(f))
     headers = reader[:1]

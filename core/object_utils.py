@@ -153,10 +153,6 @@ def remap_lists(box_list,holes_list):
         box5 -> box4 [4 > 3]
         box6 -> box6 [5 > 5]
     '''
-    print("box_list: " , box_list)
-    print("len of box_list: " , len(box_list))
-    print("holes_list: " , holes_list)
-    print("len of holes_list: " , len(holes_list))
     
     new_order = [2, 3, 1, 4, 0, 5]
     remapped_box_list = [box_list[i] for i in new_order]
