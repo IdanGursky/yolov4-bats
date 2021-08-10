@@ -146,6 +146,10 @@ minimum_distance_to_merge = 30
 minimum_interval_length = 30 
 ```
 
+#### A note on frame rate
+
+Currently, the FPS rate of the used camera is around 14.3 frames per second, i.e. 30 frames are equivalent to about 2 seconds. keep that in mind when trying out new setup with a different camera
+
 
 ### motion detection
 The YOLOv4 algorithm is run only when there is movement in the current sequence of frames in order to save processing time and resources. The motion detection algorithm is a built-in one of the openCV library and can be tweaked to change its sensitivity. If a bat is stationary somewhere in the frame, then the script also makes sure that it hasn’t been detected in the last few frames. If so, then YOLO would still run.
