@@ -155,8 +155,13 @@ Currently, the FPS rate of the used camera is around 14.3 frames per second, i.e
 The YOLOv4 algorithm is run only when there is movement in the current sequence of frames in order to save processing time and resources. The motion detection algorithm is a built-in one of the openCV library and can be tweaked to change its sensitivity. If a bat is stationary somewhere in the frame, then the script also makes sure that it hasn’t been detected in the last few frames. If so, then YOLO would still run.
 
 ### logic tester 
-run different configurations on existing event_matrix
+run different configurations on existing event_matrix. the relevent input file needs to be updated in logic_tester.py, under 'video_name'
+afterwards, run -
 
+```bash 
+python -m core.logic_tester 
+```
+ 
 
 
 
