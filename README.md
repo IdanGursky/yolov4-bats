@@ -25,14 +25,17 @@ The images in the datasets were tagged using this python based tool - [github li
 
 The frames were extracted from video footage using this tool - [free-video-to-jpg-converter](https://free-video-to-jpg-converter.en.uptodown.com/windows)
 
-#### A note on choosing the images 
-Bear in mind that although some frames may look inappropriate for the data set as they showcase the subject in an awkward position and with severe motion blur, these are the ones we actually want. The CNN (convolutional neural network) on which the YOLOv4 relies is trained based on extracted features of the bat that may not be visible to the naked eye, but may be very indicative during the detection process. 
+### A note on choosing the images 
+#### Bear in mind that although some frames may look inappropriate for the data set as they showcase the subject in an awkward position and with severe motion blur, these are the ones we actually want. The CNN (convolutional neural network) on which the YOLOv4 relies is trained based on extracted features of the bat that may not be visible to the naked eye, but may be very indicative during the detection process. 
 
 Lastly, if a new model has been trained, it should be converted from darknet format to tensor-flow as instructed in the tutorial.
 
 ## Getting Started
 
-### install conda
+### Install Python
+at least version 3 - [python.org](https://www.python.org/downloads/windows/) 
+
+### Install Conda
 preferably the latest version from [conda.io](https://docs.conda.io/en/latest/miniconda.html)
 
 ### Conda environment
@@ -43,6 +46,7 @@ first, you need to create a conda environment -
 conda env create -f conda-gpu.yml
 conda activate yolov4-gpu
 ```
+and then run the following code in the command line - 
 
 ### command line code 
 
@@ -67,7 +71,7 @@ size in pixels of sliding convolutional window (320 / 416).
 
 ##### model 
 
-default yolov4
+Default yolov4
 
 ##### directory 
 
@@ -76,7 +80,10 @@ Each directory contains a night of videos. the algorithm will run on each video 
 
 ## Outputs
 
-each of the outputs will be produced in the same directory given as an input, and each file name will match the input file.
+Each of the outputs will be produced in the same directory given as an input, and each file name will match the input file.
+
+#### Note
+Every run existing files with same name are deleted and new ones are created. So if we re-run a certain video, make sure it's output files are closed, otherwise an error will occur.
 
 ### Event matrix
 - A boolean matrix logging interactions between a bat and the props in the environment in each frame. 
