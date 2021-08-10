@@ -51,7 +51,7 @@ and then run the following code in the command line -
 ### command line code 
 
 ```bash 
-python detect_video_final.py --weights_env ./checkpoints/env-1700iter-416 --weights ./checkpoints/bats-320-310721 --size 320 --model yolov4 --directory ./data/video
+python detect_video_final.py --weights_env ./checkpoints/env-1700iter-416 --weights_bats ./checkpoints/bats-320-310721 --size 320 --model yolov4 --directory ./data/video
 ```
 
 #### flags explanation 
@@ -62,7 +62,7 @@ environmental weights, to classify different objects in the experiment area - bo
 
 ##### weights_bats
 
-bat weights, to locate it during each frame
+bat weights, to locate the bat position in the video per frame
 
 ##### size
 
