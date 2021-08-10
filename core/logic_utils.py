@@ -238,7 +238,7 @@ def event_sorter(f, streaks_list_array, oa_fps, length_threshold):
         logger_utils.logger(f, streak[0], streak[1], oa_fps, exp_index, event, in_row, out_row)
   
   
-def events_logger(logger, event_matrix, oa_fps, log_path, video_name):
+def events_logger(directory, logger, event_matrix, oa_fps, log_path, video_name):
         
     # remove first row of event_matrix 
     event_matrix = np.delete(event_matrix, 0, axis = 0)
@@ -255,7 +255,7 @@ def events_logger(logger, event_matrix, oa_fps, log_path, video_name):
     
     event_sorter(logger, streaks_list_array, oa_fps, const.minimum_interval_length)
     logger.close()
-    logger_utils.sort_log_by_time(log_path, video_name)
+    logger_utils.sort_log_by_time(directory, log_path, video_name)
 
     return 
     
